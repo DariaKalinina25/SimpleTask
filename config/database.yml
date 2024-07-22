@@ -2,6 +2,10 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("DB_USERNAME") { "your_username" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { "your_password" } %>
+  port: <%= ENV.fetch("DB_PORT") { 5432 } %>
 
 development:
   <<: *default
@@ -16,3 +20,5 @@ production:
   database: simple_task_production
   username: simple_task
   password: <%= ENV["SIMPLE_TASK_DATABASE_PASSWORD"] %>
+  host: <%= ENV.fetch("DB_HOST") { "production_host" } %>
+  port: <%= ENV.fetch("DB_PORT") { 5432 } %>
